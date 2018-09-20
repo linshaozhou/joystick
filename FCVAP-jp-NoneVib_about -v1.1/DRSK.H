@@ -1,0 +1,20 @@
+// DRSK.h
+// 功能:游戏杆控制面板DLL入口和两个必须导出的接口
+// 版本:1.2003.10.06
+// 日期:2003/10/06
+/////////////////////////////////////////////////////////////////////////////
+#ifndef __DRSK_H__
+#define __DRSK_H__
+
+#if _MSC_VER > 1000
+#pragma once
+#endif // _MSC_VER > 1000
+
+/////////////////////////////////////////////////////////////////////////////
+//出口函数
+STDAPI				DllGetClassObject(REFCLSID rclsid, REFIID riid, PVOID* ppv);
+STDAPI				DllCanUnloadNow();
+STDAPI DllUnregisterServer(void);
+STDAPI DllRegisterServer(void);
+/////////////////////////////////////////////////////////////////////////////
+#endif // __DRSK_H__

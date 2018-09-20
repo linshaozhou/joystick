@@ -1,0 +1,25 @@
+// GetOsType.h
+// 功能:获得Windows操作系统的类型
+// 版本:1.2003.10.06
+// 日期:2003/10/06
+/////////////////////////////////////////////////////////////////////////////
+#ifndef __GETOSTYPE_H__
+#define __GETOSTYPE_H__
+
+#if _MSC_VER > 1000
+#pragma once
+#endif // _MSC_VER > 1000
+/////////////////////////////////////////////////////////////////////////////
+#define WINDOWS_31			0X01
+#define WINDOWS_95			0X02
+#define WINDOWS_98			0X03
+#define WINDOWS_ME			0X04
+#define WINDOWS_NT			0X05
+#define WINDOWS_2K			0X06
+#define	WINDOWS_XP			0X07
+#define	WINDOWS_VISTA		0X08
+/////////////////////////////////////////////////////////////////////////////
+//出口函数
+DWORD 				GetOsType();
+/////////////////////////////////////////////////////////////////////////////
+#endif // __GETOSTYPE_H__

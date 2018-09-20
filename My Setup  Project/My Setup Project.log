@@ -1,0 +1,20 @@
+=================Logging started at 2011-5-9 11:46:53 ==================
+Upgrading project
+The project was successfully backed up to H:\awork room\2011project\3.85\817\DILONG USB Network Gamepad V3.8.5(en)\My Setup  Project_bak1\My Setup Project.ipr.
+Upgrading Project Settings
+Upgrading String Tables
+Upgrading File Groups...this may take several minutes
+Migrated file group Sign_file to component Sign_file
+Upgrading Setup Types
+Upgrading Components
+Migrated component rundll to feature rundll
+Synchronizing Setup Types with updated Feature Names
+Synchronizing Custom Media Compression with updated feature names.
+Upgrading Setup Files
+Upgrading Release Settings
+Upgrading Registry Objects
+Migrated <Default> registry set
+Upgrading Shell Objects
+Importing Custom Dialogs
+Upgrading Script Files
+ 

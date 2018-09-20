@@ -1,0 +1,27 @@
+#ifndef __ATTRIBUTE_H__
+#define __ATTRIBUTE_H__
+#define VID 0x146b
+#define PID 0x0d10
+#define  JMROOTCLSID _T("CLSID\\{D46464FB-146b-0d10-A675-AB5A481BAC79}")
+#define  JMCLSID _T("CLSID\\{D46464FB-146b-0d10-A675-AB5A481BAC79}\\InProcServer32")
+static const TCHAR SheetCaptionString[100] = _T("JC-U3712T");
+
+static const GUID CLSID_EZFRD = 
+{ 0xD46464FA, 0x146b, 0x0d10, { 0xA6, 0x75, 0xAB, 0x5A, 0x48, 0x1B, 0xAC, 0x79}};
+
+static const GUID CLSID_FVACP = 
+{ 0xD46464FB, 0x146b, 0x0d10, { 0xA6, 0x75, 0xAB, 0x5A, 0x48, 0x1B, 0xAC, 0x79}};
+
+
+
+#endif // __ATTRIBUTE_H__
+//USB Vibration Joystick 4A12kpov
+//USB GAME PAD  4a12kpov
+//THUNDER STRIKE GAME PAD 4a12kpov
+//PC TWIN SHOCK 4a12kpov
+//PC DUAL SHOCK 4a12kpov
+//KILLER FORCE ATOMIC 4a12kpov
+//BULLFROG GAME PAD	4a12kpov
+//Bullfrog Blue Touch Edition 4a12kpov
+//LS-USBMX1/2/3 Steering Wheel W/Vibration 2a12k pov
+//LS-USBMX1/2/3 Steering Wheel W/Vibration 2a10k pov

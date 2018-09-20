@@ -1,0 +1,220 @@
+
+////////////////////////////////////////////////////////////////////////////////
+//                                                                            
+//   File Name:   Setup.rul                                                   
+//                                                                            
+//   Description: InstallShield script                                        
+//                                                                            
+//   Comments:    This script was generated based on the selections you made in
+//                the Project Wizard.  Refer to the help topic entitled "Modify      
+//                the script that the Project Wizard generates" for information
+//                on possible next steps.
+//
+////////////////////////////////////////////////////////////////////////////////
+
+
+// Include header files
+    
+#include "ifx.h"
+BOOL ReOrUn;        
+
+////////////////////// string defines ////////////////////////////
+
+//////////////////// installation declarations ///////////////////
+
+// ----- DLL function prototypes -----
+
+
+    // your DLL function prototypes
+
+
+// ---- script function prototypes -----
+
+
+    // your script function prototypes
+
+    // your global variables
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//                                                                           
+//  FUNCTION:   OnFirstUIBefore                                            
+//                                                                           
+//  EVENT:      The OnFirstUIBefore event is called by OnShowUI when the setup is
+//              running in first install mode. By default this event displays UI allowing
+//              the end user to specify installation parameters.
+//              
+//              Note: This event will not be called automatically in a
+//              program...endprogram style setup.                                                             
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+function OnFirstUIBefore()
+    number  nResult;
+    string  szTitle, szMsg;
+    string  szLicenseFile, szQuestion;
+begin	
+    // TO DO: if you want to enable background, window title, and caption bar title                                                                     
+    // SetTitle( @TITLE_MAIN, 24, WHITE );                                        
+    // SetTitle( @TITLE_CAPTIONBAR, 0, BACKGROUNDCAPTION ); 	                   
+    // Enable( FULLWINDOWMODE );						   
+    // Enable( BACKGROUND );							  
+    // SetColor( BACKGROUND, RGB( 0, 128, 128 ) );					       
+    //TARGETDIR = PROGRAMFILES ^ @COMPANY_NAME ^ @PRODUCT_NAME;
+    TARGETDIR = WINDIR ^ @TARGETDIR_NAME^ @SUBTARGETDIR_NAME;
+	
+Dlg_Start:
+    // beginning of dialogs label
+Dlg_SdWelcome:
+    szTitle = "";
+    szMsg = "";
+    nResult = SdWelcome( szTitle, szMsg );
+    if (nResult = BACK) goto Dlg_Start;
+
+Dlg_ObjDialogs:
+    nResult = ShowObjWizardPages( nResult );
+    if (nResult = BACK) goto Dlg_SdWelcome;
+    
+    // set up default status
+    SetStatusWindow( 0, "" );
+    Enable( STATUSEX );
+    StatusUpdate( ON, 100 );
+   
+    return 0;
+end;
+//---------------------------------------------------------------------------
+// OnMaintUIBefore
+//
+// Maintenance UI Sequence - Before Move Data
+//
+// The OnMaintUIBefore event is called by OnShowUI when the setup is
+// running in maintenance mode. By default this event displays UI that
+// allows the end user to add or remove components, repair currently
+// installed components or uninstall the application.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnMaintUIBefore()
+//    string szResult, szCaption;
+    number nResult;
+begin
+	   // TO DO: if you want to enable background, window title, and caption bar title   								
+	   // SetTitle( @TITLE_MAIN, 24, WHITE );					
+	   // SetTitle( @TITLE_CAPTIONBAR, 0, BACKGROUNDCAPTION );  
+	   //SetColor( BACKGROUND, RGB( 0, 128, 128 ) );					
+	   // Enable( FULLWINDOWMODE );						
+	   // Enable( BACKGROUND );							
+	
+    //Maintenance Mode
+  //  SetDialogTitle(DLG_ASK_YESNO, "Reinstall or Remove");//Reinstall or Uninstall  
+   SetDialogTitle(DLG_ASK_YESNO,@MUIB_TITLE);//Reinstall or Uninstall
+    ReOrUn = FALSE;
+     
+  //  if(AskYesNo("The driver is already existed!\nYES to reinstall the driver,\nNO to Remove the driver.", YES) = NO) then
+      if(AskYesNo(@MUIB_ASK_YN, YES) = NO) then
+    
+        SetStatusWindow( 0, "" );
+        Enable( STATUSEX );
+        StatusUpdate( ON, 100 );
+         LaunchAppAndWait(TARGETDIR^"SetReg64.exe","/u /s",LAAW_OPTION_WAIT );
+         LaunchAppAndWait(SUPPORTDIR^"CloseJoyToKey.exe","",LAAW_OPTION_WAIT );  
+        ComponentRemoveAll(); 
+     else
+     	ComponentReinstall();
+     	ReOrUn = TRUE;
+     endif;
+    return 0;
+end;
+ 
+//---------------------------------------------------------------------------
+// OnFirstUIAfter
+//
+// First Install UI Sequence - After Move Data
+//
+// The OnFirstUIAfter event called by OnShowUI after the file transfer
+// of the setup when the setup is running in first install mode. By default
+// this event displays UI that informs the end user that the setup has been
+// completed successfully.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnFirstUIAfter()
+    NUMBER nValue, nResult, nDefOptions;
+    BOOL Option1, Option2;
+    STRING szString, szTitle, szMsg1, szMsg2, szResult;
+begin
+    Disable(STATUSEX);
+
+    ShowObjWizardPages(NEXT);  
+
+ //    LaunchAppAndWait(TARGETDIR^"CloseXboxstate.exe","copyfile",LAAW_OPTION_WAIT ); 	
+     LaunchAppAndWait(TARGETDIR^"SetReg64.exe","/s",LAAW_OPTION_WAIT ); 
+ 	SdFinish("", "", "", "" , "", Option1, Option2);
+end;
+
+ 
+ 
+
+
+
+//---------------------------------------------------------------------------
+// OnMaintUIAfter
+//
+// The OnMaintUIAfter event called by OnShowUI after the file transfer
+// of the setup when the setup is running in maintenance mode. By default
+// this event displays UI that informs the end user that the maintenance setup
+// has been completed successfully.
+//
+// Note: This event will not be called automatically in a
+// program...endprogram style setup.
+//---------------------------------------------------------------------------
+function OnMaintUIAfter()
+    STRING szTitle, szMsg1, szMsg2, szOption1, szOption2;
+    NUMBER bOpt1, bOpt2,nResult;
+begin
+	Disable(STATUSEX);
+
+    ShowObjWizardPages(NEXT);
+
+	if(ReOrUn) then          
+		bOpt1   = FALSE;
+    	bOpt2   = FALSE;
+    	//szMsg1  = "InstallShield Wizard has successfully reinstall "+@PRODUCT_NAME+".Click Finsih to complete in stallation.";
+		//szTitle = "Reinstallation Wizard complete";  
+    	szMsg1  = @MUIA_SMG1_1+@PRODUCT_NAME+@MUIA_SMG1_2;
+		szTitle = @MUIA_TITLE1;	 
+//		LaunchAppAndWait(TARGETDIR^"CloseXboxstate.exe","copyfile",LAAW_OPTION_WAIT ); 	
+		 LaunchAppAndWait(TARGETDIR^"SetReg64.exe","/s",LAAW_OPTION_WAIT ); 
+  	    SdFinishEx(szTitle, szMsg1, szMsg2, szOption1, szOption2, bOpt1, bOpt2);
+	else
+		bOpt1   = FALSE;
+    	bOpt2   = FALSE;
+    //	szMsg1  = "InstallShield Wizard has successfully uninstall "+@PRODUCT_NAME+".Click Finsih to complete in stallation.";
+	//	szTitle = "Uninstallation Wizard complete";  
+    	szMsg1  = @MUIA_SMG2_1+@PRODUCT_NAME+@MUIA_SMG2_2;
+		szTitle = @MUIA_TITLE2;
+    	SdFinishEx(szTitle, szMsg1, szMsg2, szOption1, szOption2, bOpt1, bOpt2);
+    endif;
+end;
+ 
+//---------------------------------------------------------------------------
+// OnSetUpdateMode
+//
+// OnSetUpdateMode is called directly by the framework to set the UPDATEMODE
+// InstallShield system variable appropriately to control which UI events
+// are called by OnShowUI.
+//
+// Note: This event is called for all setups.
+//---------------------------------------------------------------------------
+function OnSetUpdateMode()
+	number	nIgnore, nMediaFlags, nInstalledVersion, nUpdateVersion, nResult;
+	string	szVersion, szIgnore, szMsg;
+begin   
+//    szMsg="Please make sure that you have installed the DirectX 7.0 or above\n"+ "before installing the driver.";
+ //    MessageBoxEx(szMsg,"Warning", WARNING);
+end;
+
+
+// --- include script file section ---

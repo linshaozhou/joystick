@@ -1,0 +1,207 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 日? (未知次?言: 0x0) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+#ifdef _WIN32
+LANGUAGE LANG_JAPANESE, 0x0
+#pragma code_page(932)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_TEST DIALOGEX 0, 0, 253, 262
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "テスト"
+FONT 8, "Arial", 0, 0, 0x0
+BEGIN
+    CONTROL         "1",IDC_BUTTON1,"LampControl",WS_TABSTOP,29,105,15,14
+    CONTROL         "2",IDC_BUTTON2,"LampControl",WS_TABSTOP,65,105,15,14
+    CONTROL         "3",IDC_BUTTON3,"LampControl",WS_TABSTOP,101,105,15,14
+    CONTROL         "4",IDC_BUTTON4,"LampControl",WS_TABSTOP,137,105,15,14
+    CONTROL         "5",IDC_BUTTON5,"LampControl",WS_TABSTOP,173,105,15,14
+    CONTROL         "6",IDC_BUTTON6,"LampControl",WS_TABSTOP,209,105,15,14
+    CONTROL         "7",IDC_BUTTON7,"LampControl",WS_TABSTOP,29,130,15,14
+    CONTROL         "8",IDC_BUTTON8,"LampControl",WS_TABSTOP,65,130,15,14
+    CONTROL         "9",IDC_BUTTON9,"LampControl",WS_TABSTOP,101,130,15,14
+    CONTROL         "10",IDC_BUTTON10,"LampControl",WS_TABSTOP,137,130,15,14
+    GROUPBOX        "ボタン",IDC_STATICBTNGRP,10,93,231,61
+    GROUPBOX        "軸",IDC_STATICAXESGRP,10,7,130,80
+    CONTROL         "Custom2",IDC_LAXIS,"AxesControl",WS_TABSTOP,20,22,45,40
+    GROUPBOX        "POV",IDC_STATICPOVGRP,150,7,91,80
+    CONTROL         "Custom3",IDC_POV,"PovControl",WS_TABSTOP,166,25,58,50
+    LTEXT           "",IDC_STATIC_DEVICESTATE_TEST,45,179,185,8
+    GROUPBOX        "接続状況",IDC_STATICSTST,10,164,231,32
+    CONTROL         "11",IDC_BUTTON11,"LampControl",WS_TABSTOP,173,130,15,14
+    CONTROL         "12",IDC_BUTTON12,"LampControl",WS_TABSTOP,210,130,15,14
+    CONTROL         "Custom2",IDC_RAXIS,"AxesControl",WS_TABSTOP,84,22,45,40
+    LTEXT           "X軸、Y軸",IDC_STATIC,20,71,49,8
+    LTEXT           "Z軸、Z回転",IDC_STATIC,82,71,49,8
+    ICON            IDI_ICONERROR,IDC_TESTICON,18,175,20,20,NOT WS_VISIBLE
+END
+
+IDD_FORCEFEEDBACK DIALOGEX 0, 0, 253, 227
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "振動"
+FONT 8, "Arial", 0, 0, 0x1
+BEGIN
+    CONTROL         "Custom1",IDC_RUMBLE,"RumbleControl",WS_TABSTOP,97,109,60,50
+    LTEXT           "",IDC_STATIC_DEVICESTATE_FORCEFEEDBACK,39,198,178,8
+    GROUPBOX        "接続状況",IDC_STATICSTSF,9,185,236,31
+    CONTROL         "Slider1",IDC_SLIDER_EFFECT,"msctls_trackbar32",TBS_AUTOTICKS | TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,80,20,120,14,WS_EX_TRANSPARENT
+    GROUPBOX        "振動",IDC_STATICEFFECTGRP,9,5,235,177
+    ICON            IDI_ICONERROR,IDC_EFEEICON,15,194,20,20,NOT WS_VISIBLE
+    PUSHBUTTON      "停止",IDC_BUTTON_STOP,106,65,45,15
+    PUSHBUTTON      "左",IDC_BUTTON_LFORCE,46,45,45,15
+    PUSHBUTTON      "右",IDC_BUTTON_RFORCE,166,45,45,15
+    PUSHBUTTON      "両方",IDC_BUTTON_BFORCE,106,45,45,15
+    LTEXT           "振動強度:",IDC_STATIC,20,22,35,8
+    GROUPBOX        "左スティックを動かして振動のテストを行います",IDC_STATIC,38,88,187,85
+    CTEXT           "",IDC_STATICLISTPRE,205,20,25,13,0,WS_EX_CLIENTEDGE
+END
+
+IDD_CALIBRATION DIALOGEX 0, 0, 258, 254
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "調整"
+FONT 8, "Arial", 0, 0, 0x0
+BEGIN
+    CONTROL         "Custom2",IDC_LAXIS,"AxesControl",WS_TABSTOP,40,65,55,45
+    LTEXT           "X軸 =",IDC_STATIC,31,120,20,8
+    LTEXT           "Y軸 =",IDC_STATIC,75,120,23,8
+    LTEXT           "0",IDC_XPOS,53,120,18,8
+    LTEXT           "0",IDC_YPOS,97,120,18,8
+    LTEXT           "アナログスティックの中心を調整します。\n1.「初期設定」をクリックします。\n2.　黒の十字が中心からずれている場合、「調整する」をクリックします。",IDC_STATIC,15,17,224,24
+    PUSHBUTTON      "初期設定",IDC_DEFAULT,43,144,56,16
+    PUSHBUTTON      "調整する",IDC_SET,152,144,56,16
+    LTEXT           "",IDC_STATIC_DEVICESTATE_CALIBRATION,45,191,181,8
+    GROUPBOX        "接続状況",IDC_STATICSTSCA,10,178,236,29
+    GROUPBOX        "スティックの調整",IDC_STATICCABGRP,10,7,236,166
+    CONTROL         "Custom2",IDC_RAXIS,"AxesControl",WS_TABSTOP,161,65,55,45
+    LTEXT           "Z軸 =",IDC_STATIC,145,120,20,8
+    LTEXT           "Z回転 =",IDC_STATIC,189,120,28,8
+    LTEXT           "0",IDC_ZPOS,166,120,18,8
+    LTEXT           "0",IDC_RzPOS,218,120,18,8
+    ICON            IDI_ICONERROR,IDC_CALIICON,18,185,20,20,NOT WS_VISIBLE
+    GROUPBOX        "左スティック",IDC_STATICLGRP,17,49,104,89
+    GROUPBOX        "右スティック",IDC_STATICRGRP,136,49,104,89,BS_LEFT
+END
+
+IDD_ABOUTDLG DIALOGEX 0, 0, 211, 183
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "情報"
+FONT 10, "Arial", 0, 0, 0x0
+BEGIN
+    CTEXT           "Driver Version: 3.85(2012.08)\nCopyright (C) 2008-2014\nAll right reserved.",IDC_STATIC,49,72,110,30,SS_NOPREFIX
+    LTEXT           "1????!et??!§a???!e:",IDC_STATIC,27,114,57,9,NOT WS_VISIBLE
+    GROUPBOX        "JC-P302U",IDC_STAABOUTGRP,8,29,193,110,BS_CENTER
+    LTEXT           "http://www.PXN-Game.com.cn",IDC_STATIC,87,114,102,9,NOT WS_VISIBLE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_TEST, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 231
+    END
+
+    IDD_CALIBRATION, DIALOG
+    BEGIN
+        VERTGUIDE, 42
+        VERTGUIDE, 146
+        VERTGUIDE, 188
+        VERTGUIDE, 209
+        BOTTOMMARGIN, 227
+    END
+
+    IDD_ABOUTDLG, DIALOG
+    BEGIN
+        TOPMARGIN, 7
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // 日? (未知次?言: 0x0) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中?人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICONERROR           ICON                    "error.ico"
+#endif    // 中文(中?人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
